@@ -1,4 +1,4 @@
-from flask import Flask, request,jsonify
+from flask import Flask, request
 import json
 
 
@@ -15,11 +15,12 @@ def home():
 @app.route('/cal',methods=["GET"])
 def math_op():
 
-    rj=request.json["operation"]
+
+    operation=request.json["operation"]
     number1= request.json["number1"]
     number2= request.json["number2"]
 
-    if rj=="add":
+    if operation=="add":
         result=int(number1)+int(number2)
 
     # elif operation=="multiply":
@@ -31,7 +32,7 @@ def math_op():
     else:
         print("The operation is not define")
 
-    return jsonify(result)
+    return str(result)
 
     
 
